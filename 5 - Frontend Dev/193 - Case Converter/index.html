@@ -15,5 +15,30 @@
         <button id="proper-case">Proper Case</button>
         <button id="sentence-case">Sentence Case</button>
     </div>
+    <script type="application/ecmascript">
+        const text = document.querySelector("textarea");
+
+        document.getElementById("upper-case").addEventListener('click', () => {
+            text.value = text.value.toUpperCase();
+        });
+
+        document.getElementById("lower-case").addEventListener('click', () => {
+            text.value = text.value.toLowerCase();
+        });
+
+        document.getElementById("proper-case").addEventListener('click', () => {
+            text.value = text.value
+                .split(' ')
+                .map(value => value[0].toUpperCase() + value.substr(1).toLowerCase())
+                .join(' ');
+        });
+
+        document.getElementById("sentence-case").addEventListener('click', () => {
+            text.value = text.value
+                .split(/(?<=\.+\s*)/g)
+                .map(value => value[0].toUpperCase() + value.substr(1).toLowerCase())
+                .join('');
+        });
+    </script>
 </body>
 </html>
