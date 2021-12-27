@@ -4,19 +4,46 @@ body {
 }
 
 .container {
-    display: flex;
     min-height: 100vh;
+    padding-top: 25vh;
+}
+
+.white-keys, .black-keys {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.container kbd {
+.black-keys {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.black-keys kbd, .white-keys kbd {
     flex: 0 1 3rem;
-    background-color: white;
     text-align: center;
     height: 50vh;
     line-height: 80vh;
     border: 3px gray solid;
+}
+
+.white-keys kbd {
+    background-color: white;
+}
+
+#kbd-E {
+    margin-right: 4rem;
+}
+
+.black-keys kbd {
+    background-color: black;
+    color: white;
+    height: 30vh;
+    width: 2rem;
+    margin: auto 1rem;
+    line-height: 50vh;
 }
 
 .container kbd:not(:first-of-type) {
