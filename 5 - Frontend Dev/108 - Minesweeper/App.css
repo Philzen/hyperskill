@@ -1,9 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  align-items: center;
+  background-color: #282c34;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
 .App {
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(150, 0, 0, 0.75),
+  4px -4px 4px rgba(150, 0, 0, 0.75),
+  -4px 4px 4px rgba(150, 0, 0, 0.75),
+  -4px -4px 4px rgba(150, 0, 0, 0.75);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 14pt;
+  margin-left: 5px;
   pointer-events: none;
 }
 
@@ -15,13 +39,14 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  font-size: calc(12px + 2vmin);
+  line-height: calc(6px + 2vmin);
   color: white;
+  margin-bottom: 2vh;
 }
 
 .App-link {
@@ -35,4 +60,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1vh;
+}
+
+.playing-field {
+  border-spacing: 4px;
+}
+
+.cell {
+  background: black;
+  height: 4vh;
+  width: 4vh;
+}
+
+.reset-button {
+  border: 0;
+  background: transparent;
+  line-height: 0;
+  font-size: 22px;
+}
+
+.timer {
+  font-family: monospace;
+  line-height: 26px;
 }

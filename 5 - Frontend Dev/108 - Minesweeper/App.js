@@ -1,5 +1,5 @@
 import React from 'react';
-import loadingAnimationGif from './img/bomb.svg';
+import bombGif from './img/bomb.svg';
 import './App.css';
 
 let Cell = ({cellState}) => (
@@ -25,9 +25,9 @@ function PlayingField({mineMap}) {
 }
 
 let ControlPanel = () => (
-  <div>
-    <div className="flag-counter">10</div>
-    <button type="reset" />
+  <div className="control-panel">
+    <div className="flag-counter">💣 10</div>
+    <button className="reset-button" type="reset">🔄</button>
     <div className="timer">0:00</div>
   </div>
 );
@@ -48,10 +48,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={loadingAnimationGif} className="App-logo" alt="logo" />
-        <ControlPanel />
-        <PlayingField mineMap={mineMap} />
+        <span>Minesweeper</span><img src={bombGif} className="App-logo" alt="logo" />
       </header>
+      <ControlPanel />
+      <PlayingField mineMap={mineMap} />
     </div>
   );
 }
