@@ -75,8 +75,26 @@
 
 .cell {
   background: black;
+  background-size: contain;
   height: 4vh;
   width: 4vh;
+}
+
+.cell.revealed {
+  background-color: #282c34;
+  box-shadow: 4px 4px 4px rgba(150, 0, 0, 0.75),
+  4px -4px 4px rgba(150, 0, 0, 0.75),
+  -4px 4px 4px rgba(150, 0, 0, 0.75),
+  -4px -4px 4px rgba(150, 0, 0, 0.75);
+}
+
+.cell.flagged {
+  background-image: url(img/target.svg);
+}
+
+.cell.boom {
+  background-image: url(img/fired.svg);
+  background-color: rgb(150, 0, 0)
 }
 
 .reset-button {

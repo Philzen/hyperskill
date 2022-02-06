@@ -2,13 +2,25 @@ import React from 'react';
 import bombGif from './img/bomb.svg';
 import './App.css';
 
-let Cell = ({cellState}) => (
-  <td className="cell"></td>
-)
+function Cell ({mined}) {
+  const [state, setState] = React.useState('')
+
+  let handleRightClick = (event) => {
+    event.preventDefault();
+    setState("flagged");
+  }
+
+  return (
+    <td className={("cell " + state).trim()}
+       onClick={() => setState(mined ? "boom" : "revealed")}
+       onContextMenu={handleRightClick}
+    />
+  )
+}
 
 let Row = ({columns}) => {
-    let cells = columns.map((cellState, columnIndex) =>
-      <Cell key={columnIndex} cellState={cellState} />
+    let cells = columns.map((isMined, columnIndex) =>
+      <Cell key={columnIndex} mined={isMined} />
     );
     return <tr>{cells}</tr>
 }
@@ -33,17 +45,22 @@ let ControlPanel = () => (
 );
 
 function App() {
-  let mineMap = [
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0]
-  ];
+
+  let randomMinePositions = [];
+  while (randomMinePositions.length < 10) {
+    let diceRoll = Math.round(Math.random() * 71);
+    if (!randomMinePositions.includes(diceRoll)) {
+      randomMinePositions.push(diceRoll);
+    }
+  }
+
+  let mineMap = [];
+  for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+    mineMap.push([]);
+    for (let colIndex = 0; colIndex < 8; colIndex++) {
+      mineMap[rowIndex].push(randomMinePositions.includes(rowIndex * 8 + colIndex));
+    }
+  }
 
   return (
     <div className="App">
@@ -55,5 +72,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;
